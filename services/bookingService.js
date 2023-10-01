@@ -1,4 +1,10 @@
-const {} = require('../config/prisma')
+// const { prisma } = require('../config/prisma');
+
+
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+
 
 async function getAllBooking() {
     try {
@@ -6,9 +12,9 @@ async function getAllBooking() {
 
         return booking;
     } catch (error) {
-        // console.eror(error);
+        console.error(error);
 
-        // throw new Error()
+        throw new Error()
     }
 
 };
@@ -16,7 +22,6 @@ async function createBooking(booking) {
     try {
         const mappedBooking = {
             data: {
-                id: booking.id,
                 name: booking.name,
                 email: booking.email,
                 phone: booking.phone,
@@ -26,17 +31,15 @@ async function createBooking(booking) {
                 reservationtime: booking.reservationtime
             }
         }
+
         const createdBooking = await prisma.booking.create(mappedBooking);
         
-        return createBooking
+        return createdBooking
     } catch (error) {
-        // console.eror(error);
-
-        // throw new Error()
+        console.error("Terjadi kesalahan:", error);
     }
 
 };
-
 
 
 module.exports = {
