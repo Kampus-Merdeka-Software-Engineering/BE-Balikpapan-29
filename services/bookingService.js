@@ -29,8 +29,8 @@ async function createBooking(booking) {
                 phone: booking.phone,
                 service: booking.service,
                 doctor: booking.doctor,
-                reservationdate: date (booking.reservationdate),
-                reservationtime: date (booking.reservationtime)
+                reservationdate: date /* (booking.reservationdate) */,
+                reservationtime: date /* (booking.reservationtime) */
             }
         });
         
