@@ -1,7 +1,7 @@
 {
   "name": "railway-booking",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tata cara penggunaan Back End Grup 29:\r 1. npm init --yes\r 2. npx prisma generate\r 3. npm run dev",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

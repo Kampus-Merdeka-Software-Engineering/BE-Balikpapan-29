@@ -17,22 +17,22 @@ async function getAllBooking() {
         throw new Error()
     }
 
-};
+}
 async function createBooking(booking) {
+    const date = new Date();
+
     try {
-        const mappedBooking = {
+        const createdBooking = await prisma.booking.create({
             data: {
                 name: booking.name,
                 email: booking.email,
                 phone: booking.phone,
                 service: booking.service,
                 doctor: booking.doctor,
-                reservationdate: booking.reservationdate,
-                reservationtime: booking.reservationtime
+                reservationdate: date (booking.reservationdate),
+                reservationtime: date (booking.reservationtime)
             }
-        }
-
-        const createdBooking = await prisma.booking.create(mappedBooking);
+        });
         
         return createdBooking
     } catch (error) {
