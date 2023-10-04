@@ -61,6 +61,7 @@ app.post('/api/email',(req,res)=>{
     res.json(sentEmails);
   });
 
+//   Route booking
 app.use(routes.bookingRoutes.router);
 
  
@@ -71,3 +72,5 @@ app.use(routes.bookingRoutes.router);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+app.set('debug', true);
