@@ -18,5 +18,5 @@ model booking {
   service    String
   doctor     String
   reservationdate DateTime
-  reservationtime DateTime 
+  reservationtime String 
 }
