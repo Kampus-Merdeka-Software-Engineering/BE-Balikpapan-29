@@ -20,6 +20,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+const sentEmails = [];
+
 app.use((req, res, next) => {
     console.log(`Method: ${req.method} ${req.path}`);
     next();
@@ -42,13 +44,26 @@ app.post('/api/email',(req,res)=>{
                 message: 'Something went wrong in sending email!'
             })
         }else{
-            res.send({message:'Email sent successfully!'})
+            const sentEmail = {
+                name: name,
+                from: from,
+                subject: subject,
+                message: message
+              };
+              sentEmails.push(sentEmail);
+              res.send({ message: 'Email sent successfully!' });
         }
     })
 })
 
+ // Route untuk melihat data email yang telah dikirim
+ app.get('/api/email', (req, res) => {
+    res.json(sentEmails);
+  });
 
 app.use(routes.bookingRoutes.router);
+
+ 
 
 // routes.forEach((route) => app.use(route));
 
